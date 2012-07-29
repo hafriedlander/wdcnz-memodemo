@@ -1,0 +1,6 @@
+---
+After: '*'
+---
+Director:
+  rules:
+    'memos//$Action': 'IndexController'
