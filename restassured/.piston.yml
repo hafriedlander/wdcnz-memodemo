@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: 086f70d9b152fc8782c2c3912263bd68ae79815e
+  branch: master
+lock: false
+repository_class: Piston::Git::Repository
+repository_url: ssh://git@gitorious.silverstripe.com:2222/nzl-mobile-api/restassured.git
