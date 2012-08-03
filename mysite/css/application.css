@@ -1,0 +1,90 @@
+body {
+	background: #666; color: #aaa; overflow: hidden;
+}
+
+body, input, textarea { font-family: sans-serif; font-size: 32px; }
+
+h1, h2, h3, h4, h5, h6, p, pre, input, textarea { margin-bottom: 1em; }
+
+em { text-decoration: underline; }
+
+#space {
+	display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible;
+
+	-webkit-perspective: 1000;
+	-webkit-perspective-origin: center left;
+}
+
+#space, #space * {
+	-webkit-transform-style: preserve-3d;
+}
+
+#panel {
+	display: block; position: absolute; left: 10px; top: 0; width: 582px; height: 100%; overflow: visible;
+
+	-webkit-transform: rotate3d(0, 1, 0, 10deg);
+	-webkit-transform-origin: center left;
+	-webkit-transition: -webkit-transform 0.5s;
+}
+
+#panel.active {
+	-webkit-transform: rotate3d(0, 1, 0, 35deg);
+}
+
+#scroll {
+	display: block; position: absolute; left: 10px; top: 0; width: 582px; height: 100%; overflow: hidden;
+
+	background: rgba(255, 255, 255, 0.06); -webkit-border-radius: 10px;
+	-webkit-box-shadow: 0 10px 60px rgba(0,0,0,0.3);
+}
+
+#memos {
+	list-style: none; padding: 0; margin: 0; position: relative; top: 0; left: 0;
+	overflow: hidden;
+}
+
+.memo {
+	display: block; float: left; height: 150px; width: 150px; padding: 10px; margin: 10px; overflow: hidden;
+
+	font-size: 32px;
+	border: 2px solid #aaa; -webkit-border-radius: 6px;
+	cursor: pointer;
+
+	-webkit-transition: all 0.5s;
+}
+
+.memo * {
+	-webkit-transform: translate3d(0,0,1px);
+}
+
+.memo:hover, #panel > .memo {
+	border: 2px solid #eee; color: #eee;
+	background: rgba(128, 128, 128, 0.8);
+	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+	-webkit-transform: scale(1.01);
+}
+
+.memo .note {
+	opacity: 0;
+}
+
+#panel > .memo {
+	float: none; position: absolute; margin: 0;
+}
+
+#panel > .memo, #panel > .memo * {
+	-webkit-transition: all 1s ease-in-out;
+}
+
+
+
+#panel > .memo.active {
+	width: 500px; top: 0px !important; left: 221px !important;
+	-webkit-transform-origin: center left;
+	-webkit-transform: rotate3d(0, 1, 0, -32deg) translate3d(155px,0,0);
+	-webkit-box-shadow: 0 10px 60px rgba(0,0,0,0.3);
+}
+
+#panel > .memo.active .note {
+	opacity: 1;
+}
