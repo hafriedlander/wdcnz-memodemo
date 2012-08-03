@@ -2,6 +2,8 @@
 
 class IndexController extends Controller {
 
+	static $allowed_actions = array('index', 'generateExampleRecords');
+
 	function index() {
 		Requirements::combine_files('memo.js', array(
 			// Base jquery & jquery entwine
@@ -24,4 +26,20 @@ class IndexController extends Controller {
 
 		return $this->renderWith(array('Page'));
 	}
+
+	function generateExampleRecords() {
+		Memo::get()->removeAll();
+
+		for ($i = 100; $i < 120; $i++) {
+			$memo = new TextMemo(array(
+				'Title' => "Memo $i",
+				'Note' => file_get_contents('http://loripsum.net/api/2/short/plaintext')
+			));
+
+			$memo->write();
+		}
+
+		return 'Done';
+	}
+
 }
